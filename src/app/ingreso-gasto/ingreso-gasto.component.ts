@@ -4,9 +4,10 @@ import { IngresosGastos } from '../models/ingresos-gastos';
 import { IngresoGastoService } from './ingreso-gasto.service';
 import Swal from 'sweetalert2';
 import { Store } from '@ngrx/store';
-import { AppState } from '../app.reducer';
 import { Subscription } from 'rxjs';
 import { ActivarLoadingAction, DesactivarLoadingAction } from '../shared/ui.actions';
+
+import * as fromIngresoGasto from './ingreso-gasto.reducer';
 
 @Component({
   selector: 'app-ingreso-gasto',
@@ -21,7 +22,7 @@ export class IngresoGastoComponent implements OnInit, OnDestroy {
   cargando: boolean;
 
   constructor(private _ingresoGastoService: IngresoGastoService,
-    private _store: Store<AppState>) { }
+    private _store: Store<fromIngresoGasto.AppState>) { }
 
   ngOnInit() { 
     this.loadingSubs = this._store.select('ui').subscribe(ui => {

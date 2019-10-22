@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { AppState } from 'src/app/app.reducer';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { IngresosGastos } from '../../models/ingresos-gastos';
 import { ChartType } from 'chart.js';
 import { MultiDataSet, Label } from 'ng2-charts';
+
+import * as fromIngresoGasto from '../ingreso-gasto.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -25,10 +26,10 @@ export class EstadisticaComponent implements OnInit {
   public doughnutChartData: MultiDataSet = [];
   public doughnutChartType: ChartType = 'doughnut';
 
-  constructor(private _store: Store<AppState>) { }
+  constructor(private _store: Store<fromIngresoGasto.AppState>) { }
 
   ngOnInit() {
-    this.subscription = this._store.select('ingresoGasto')
+    this.subscription = this._store.select('ingresosGastos')
       .subscribe(ingresoGasto => {
         this.contarIngresoGasto(ingresoGasto.items);
       });

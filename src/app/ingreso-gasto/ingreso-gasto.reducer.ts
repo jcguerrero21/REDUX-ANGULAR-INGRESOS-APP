@@ -1,8 +1,13 @@
 import * as fromIngresoGasto from './ingreso-gasto.actions';
 import { IngresosGastos } from '../models/ingresos-gastos';
+import { AppState } from '../app.reducer';
 
 export interface IngresoGastoState {
     items: IngresosGastos[];
+}
+
+export interface AppState extends AppState {
+    IngresosGastos: IngresoGastoState;
 }
 
 const estadoInicial: IngresoGastoState = {
