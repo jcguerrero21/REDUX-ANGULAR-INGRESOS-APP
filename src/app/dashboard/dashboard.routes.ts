@@ -8,7 +8,7 @@ import { DetalleComponent } from '../ingreso-gasto/detalle/detalle.component';
 export const dashboardRoutes: Routes = [
 
  { path: '', component: EstadisticaComponent },
- { path: 'ingreso-egreso', component: IngresoGastoComponent },
+ { path: 'ingreso-gasto', component: IngresoGastoComponent },
  { path: 'detalle', component: DetalleComponent },
 
 ];
